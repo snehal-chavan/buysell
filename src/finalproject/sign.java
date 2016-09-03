@@ -112,7 +112,7 @@ public class sign extends javax.swing.JFrame {
         
             try{
                   MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
-                DB db = mongoClient.getDB("buysale");
+                DB db = mongoClient.getDB("snehal");
          System.out.println("Connect to database successfully");
                  DBCollection coll = db.getCollection("user");
          System.out.println("Collection created successfully");
@@ -120,13 +120,17 @@ public class sign extends javax.swing.JFrame {
        
         String email = jTextField3.getText().toString();
         String passwd= jTextField4.getText().toString();
-        
-        BasicDBObject doc = new BasicDBObject("fullname", fullname).
-            append("email", email).
+                System.out.println("finalproject.sign.jButton1ActionPerformed()"+fullname);
+        if(fullname!="")
+        {  
+        BasicDBObject doc = new BasicDBObject("name", fullname).
+      
             append("passwd", passwd);
 				
          coll.insert(doc);
+         
           System.out.println("Document inserted successfully");
+        }
         }catch(NumberFormatException e)
         {
             System.out.println();

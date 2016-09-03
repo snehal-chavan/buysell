@@ -5,6 +5,13 @@
  */
 package finalproject;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.MongoClient;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author snehal
@@ -88,8 +95,43 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         shopping sh1=new shopping();
-        sh1.setVisible(true);
-        dispose();
+               try{
+                  MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
+                DB db = mongoClient.getDB("snehal");
+         System.out.println("Connect to database successfully");
+                 DBCollection coll = db.getCollection("user");
+         System.out.println("Collection created successfully");
+        String name = jTextField1.getText().toString();
+        String passwd = jPasswordField1.getText().toString();
+      BasicDBObject searchQuery = new BasicDBObject();
+    searchQuery.put("name", name);
+    searchQuery.put("passwd", passwd);
+ 
+    DBCursor cursor = coll.find(searchQuery);
+     int i=0;       
+while(cursor.hasNext())
+{
+    i=1;
+   System.out.println(cursor.next());
+}
+if (i==0)
+{
+    JOptionPane.showMessageDialog(null, "user name or passwod is wrong");
+    
+}
+else 
+{
+    System.out.println("user get");
+    sh1.setVisible(true);
+    dispose();
+}
+          System.out.println("Document inserted successfully");
+        }catch(NumberFormatException e)
+        {
+            System.out.println();
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
