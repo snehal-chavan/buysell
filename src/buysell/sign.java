@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package finalproject;
+package buysell;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -106,9 +107,7 @@ public class sign extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        home h1=new home();
-        h1.setVisible(true);
-        dispose();
+      
         
             try{
                   MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
@@ -121,7 +120,8 @@ public class sign extends javax.swing.JFrame {
         String email = jTextField3.getText().toString();
         String passwd= jTextField4.getText().toString();
                 System.out.println("finalproject.sign.jButton1ActionPerformed()"+fullname);
-        if(fullname!="")
+        if(jTextField2.getText().length()!=0 && jTextField3.getText().length()!=0
+               && jTextField4.getText().length()!=0)
         {  
         BasicDBObject doc = new BasicDBObject("name", fullname).
       
@@ -130,6 +130,13 @@ public class sign extends javax.swing.JFrame {
          coll.insert(doc);
          
           System.out.println("Document inserted successfully");
+         home h1=new home();
+        h1.setVisible(true);
+        dispose();
+        }
+        else 
+        {
+             JOptionPane.showMessageDialog(null, "Fill every field");
         }
         }catch(NumberFormatException e)
         {

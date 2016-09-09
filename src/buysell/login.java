@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package finalproject;
+package buysell;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -23,6 +23,8 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
+          String username = jTextField1.getText().toString();
+        String upasswd = jPasswordField1.getText().toString();
     }
 
     /**
@@ -37,7 +39,7 @@ public class login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        loginS = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,10 +48,10 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("password");
 
-        jButton1.setText("log in");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginS.setText("log in");
+        loginS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginSActionPerformed(evt);
             }
         });
 
@@ -70,7 +72,7 @@ public class login extends javax.swing.JFrame {
                             .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(jButton1)))
+                        .addComponent(loginS)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,14 +87,14 @@ public class login extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                .addComponent(loginS)
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void loginSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSActionPerformed
         // TODO add your handling code here:
         shopping sh1=new shopping();
                try{
@@ -106,7 +108,7 @@ public class login extends javax.swing.JFrame {
       BasicDBObject searchQuery = new BasicDBObject();
     searchQuery.put("name", name);
     searchQuery.put("passwd", passwd);
- 
+  
     DBCursor cursor = coll.find(searchQuery);
      int i=0;       
 while(cursor.hasNext())
@@ -132,7 +134,7 @@ else
         }
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_loginSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,10 +172,10 @@ else
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    public static javax.swing.JButton loginS;
     // End of variables declaration//GEN-END:variables
 }

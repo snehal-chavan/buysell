@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package finalproject;
+package buysell;
 
 /**
  *
  * @author snehal
  */
-public class Finalproject {
+public class buysell {
 
     /**
      * @param args the command line arguments
